@@ -1,0 +1,79 @@
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/1131fb8f-3c58-4c4d-8bd4-c7cd6d6c1cf9 # 
+title: RAVE API
+version: 1.0
+
+/flights:
+  get:
+    queryParameters: 
+      email:
+        enum: [vvvvv@jcg.com, raymond@jcg.com, jane@jcg.com, may2017@gmail.com]
+        required: false
+        type: string
+    responses: 
+      200:
+        body: 
+          application/json:
+            example:
+              {
+                  "ID": 1,
+                  "code": "ER38sd",
+                  "price": 400,
+                  "departureDate": "2016/03/20",
+                  "origin": "MUA",
+                  "destination": "SFO",
+                  "emptySeats": 0,
+                  "plane": {
+                    "type": "Boeing 737",
+                    "totalSeats": 150
+                  }
+                }
+  post:
+    body: 
+      application/json:
+        example: |
+          {
+            "code": "GQ574",
+            "price": 399,
+            "departureDate": "2016/12/20",
+            "origin": "ORD",
+            "destination": "SFO",
+            "emptySeats": 200,
+            "plane": {"type": "Boeing 747",       "totalSeats": 400}
+          }
+    responses: 
+      201:
+        body: 
+          application/json:
+            example: |
+              {
+              "code": "GQ574",
+              "price": 399,
+              "departureDate": "2016/12/20",
+              "origin": "ORD",
+              "destination": "SFO",
+              "emptySeats": 200,
+              "plane": {"type": "Boeing 747",       "totalSeats": 400}
+              }
+
+
+  /{ID}:
+    get:
+      responses: 
+        200:
+          body: 
+            application/json:
+              example: |
+                {
+                  "ID": 1,
+                  "code": "ER38sd",
+                  "price": 400,
+                  "departureDate": "2016/03/20",
+                  "origin": "MUA",
+                  "destination": "SFO",
+                  "emptySeats": 0,
+                  "plane": {
+                    "type": "Boeing 737",
+                    "totalSeats": 150
+                  }
+                }
